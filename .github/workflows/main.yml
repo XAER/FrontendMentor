@@ -1,0 +1,24 @@
+name: Update Challenges JSON
+on:
+  push:
+    branches:
+      - "master"
+      
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Go 1.19
+        uses: actions/setup-go@v2
+        with:
+          go-version: ^1.19
+          
+      - name: Checking out...
+        uses: actions/checkout@v2
+        
+      - name: Scripts
+        uses: alinz/script.go@main
+        with:
+          worksbase: ${{ github.workspace }}
+          paths: .github/workflows/scripts
