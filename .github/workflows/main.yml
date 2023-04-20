@@ -3,22 +3,30 @@ on:
   push:
     branches:
       - "master"
-      
+
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Go 1.19
+      - name: Setup Go 1.18
         uses: actions/setup-go@v2
         with:
-          go-version: ^1.19
-          
+          go-version: ^1.18
+
       - name: Checking out...
         uses: actions/checkout@v2
-        
+
       - name: Scripts
         uses: alinz/script.go@main
         with:
           workspace: ${{ github.workspace }}
           paths: .github/workflows/scripts
+
+      - name: Checking for Changes (git status)
+        run: git status
+
+      - name: Committing and Pushing Changes
+        run: |
+          git commit -am "Update challenges.json"
+          git push origin master
