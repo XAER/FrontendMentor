@@ -61,7 +61,7 @@ func main() {
 	}
 
 	// Write the challenges.json file
-	err = os.WriteFile("challenges.json", challengesJSONBytes, 0644)
+	err = os.WriteFile("../../../challenges.json", challengesJSONBytes, 0644)
 
 	if err != nil {
 		panic(err)
