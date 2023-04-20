@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 	"strings"
 )
@@ -21,13 +22,17 @@ func arrayContains(array []string, element string) bool {
 
 func main() {
 	// Get a list of the directories in the current directory
-	dirs, err := os.ReadDir(".")
+	dirs, err := os.ReadDir("../../../")
 	if err != nil {
 		panic(err)
 	}
 
+	for _, dir := range dirs {
+		fmt.Println(dir.Name())
+	}
+
 	// Getting the challenges.json file and unmarshaling it
-	challengesJSONFile, err := os.ReadFile("challenges.json")
+	challengesJSONFile, err := os.ReadFile("../../../challenges.json")
 	if err != nil {
 		panic(err)
 	}
