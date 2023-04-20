@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Run script file
         run: |
+          echo "Running script file"
+          echo "Current directory: $(pwd)"
           chmod +x ./github/workflows/scripts/script.sh
           ./github/workflows/scripts/script.sh
         shell: bash
